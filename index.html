@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/pure-forms.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="container no-print">
+            <h1>Generate ArUco Markers for printing</h1>
+            <p>Because there wasn't any available easy-to-use services that would just let create a file which I can print so that I have 20 ArUco-Codes, I created one.
+            <strong>Use CTRL+P or the File-menu for printing</strong>.
+            </p>
+            <form class="pure-form pure-form-stacked">
+                <div class="pure-control-group">
+                    <label for="marker-count">Number of Markers</label>
+                    <input class="" value="20" type="text" id="marker-count"></input>
+                </div>
+                <label for="marker-random" class="pure-checkbox">
+                    <input id="marker-random" type="checkbox" value="" checked>
+                    Random IDs
+                </label>
+                <div class="pure-control-group">
+                    <label for="marker-ids">IDs to print, seperated by comma (will ignore number of markers)</label>
+                    <input class="pure-input-2-3" value="0,1,2,3,4" type="text" id="marker-ids"></input>
+                </div>
+                <div class="pure-control-group">
+                    <label for="marker-width">width in cm</label>
+                    <input value="2" type="text" id="marker-width"></input>
+                </div>
+                <div class="pure-control-group">
+                    <label for="marker-spacing">spacing in cm</label>
+                    <input value="0.2" type="text" id="marker-spacing"></input>
+                </div>
+            </form>
+        </div>
+        <div id="markers" class="markers"></div>
+
+        <script src="js/vendor/aruco-marker.js"></script>
+        <script src="js/vendor/jquery.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
