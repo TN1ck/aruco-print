@@ -98,7 +98,7 @@ textarea {
    ========================================================================== */
 
 body {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: normal;
 }
 
@@ -122,9 +122,10 @@ body {
 
 .marker {
     float: left;
-    width: 2cm;
-    padding-left: 0.2cm;
-    padding-bottom: 0.2cm;
+}
+
+.marker svg {
+    float: left;
 }
 
 @media only screen and (max-width: 720px) {
@@ -133,7 +134,7 @@ body {
     }
 }
 
-@media print {    
+@media print {
     .no-print, .no-print *
     {
         display: none !important;

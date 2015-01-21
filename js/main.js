@@ -12,7 +12,10 @@
     var $marker_width = $('#marker-width');
     var $marker_spacing = $('#marker-spacing');
 
-    var MAX_CODES = 1023;
+    var width = '2cm';
+    var spacing = '0.2cm';
+
+    var MAX_CODES = 1024;
 
     var rand_num = function(max) {
         var r = Math.random();
@@ -20,7 +23,7 @@
     };
 
     var parse = function(text) {
-        
+
         var values = text.replace(' ', '')
             .split(',')
             .filter(function(d) {
@@ -40,7 +43,11 @@
         $markers.html('');
         ids.forEach(function(id) {
             var marker = new ArucoMarker(id);
-            var $marker = $('<div></div>').addClass('marker');
+            var $marker = $('<div></div>')
+                .addClass('marker')
+                .css('width', width)
+                .css('padding-bottom', spacing)
+                .css('padding-left', spacing);
             $marker.html(marker.toSVG());
             $markers.append($marker);
         });
@@ -54,7 +61,7 @@
         if (num) {
             for (var i = 0; i < num; i++) {
                 if (random) {
-                    ids.push(rand_num(1023));
+                    ids.push(rand_num(MAX_CODES));
                 } else {
                     ids.push(i);
                 }
@@ -65,19 +72,22 @@
     };
 
     var marker_ids_callback = function() {
-        
+
         // try to parse the input
         var text = $marker_ids.val();
-        
+
         var values = parse(text);
         $ids.html(values.join(', '));
         create_and_append_markers(values);
+        marker_width_callback();
+        marker_spacing_callback();
 
     };
 
     var marker_width_callback = function() {
         var num = Number($marker_width.val()) + 'cm';
         if (num) {
+            width = num;
             $('.marker').css('width', num);
         }
     };
@@ -85,16 +95,16 @@
     var marker_spacing_callback = function() {
         var num = Number($marker_spacing.val()) + 'cm';
         if (num) {
+            spacing = num;
             $('.marker').css('padding-bottom', num).css('padding-left', num);
         }
     };
-    
+
     $marker_count.on('keyup', marker_count_callback);
     $marker_random.change(marker_count_callback);
     $marker_ids.on('keyup', marker_ids_callback);
     $marker_width.on('keyup', marker_width_callback);
     $marker_spacing.on('keyup', marker_spacing_callback);
-
 
     // when the page loads
     marker_count_callback();
